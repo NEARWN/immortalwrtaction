@@ -10,7 +10,7 @@
 
 name: OpenWrt firmware immortalwrt redmiax6000-mt798x
 
-on::
+on:
   workflow_dispatch:        
   schedule:
     - cron: 0 21 * * 5
