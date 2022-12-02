@@ -17,7 +17,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
 
     steps:
     - name: Checkout
@@ -65,12 +65,6 @@ jobs:
       run: |
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-        
-    #- name: Import external feeds - unblockneteasemusic
-    #  working-directory: ./openwrt
-    #  run: |
-    #    git clone https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/music
-    #    git clone "your_github_link" package/"your_folder_name"      
 
     - name: Configuration Customization
       env:
