@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: OpenWrt firmware immortalwrt X64adbybyfix
+name: OpenWrt firmware immortalwrt X64modns
 
 on:
   workflow_dispatch:        
@@ -17,7 +17,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout
@@ -54,8 +54,8 @@ jobs:
         
     - name: Clone source code
       env: 
-        REPO_URL: https://github.com/padavanonly/immortalwrtARM
-        REPO_BRANCH: mt7622
+        REPO_URL: https://github.com/immortalwrt/immortalwrt
+        REPO_BRANCH: openwrt-21.02
       run: |
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
         cd openwrt
@@ -66,15 +66,16 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         
-    #- name: Import external feeds - unblockneteasemusic
-    #  working-directory: ./openwrt
-    #  run: |
-    #    git clone https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/music
+    - name: Import external feeds - mosdns
+      working-directory: ./openwrt
+      run: |
+        git clone https://github.com/sbwml/luci-app-mosdns package/mosdns
+        git clone https://github.com/sbwml/v2ray-geodata package/geodata
     #    git clone "your_github_link" package/"your_folder_name"      
 
     - name: Configuration Customization - Build_x86
       env:
-        CONFIG_FILE: 'config/x64ad.config'
+        CONFIG_FILE: 'config/x64dns.config'
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x ./customize.sh && ./customize.sh
@@ -96,5 +97,5 @@ jobs:
     - name : Upload artifact
       uses: actions/upload-artifact@master
       with:
-        name: OpenWrt firmware immortalwrt X64adbybyfix
+        name: OpenWrt firmware immortalwrt X64modns
         path: openwrt/bin
