@@ -66,11 +66,12 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         
-    #- name: Import external feeds - unblockneteasemusic
-    #  working-directory: ./openwrt
-    #  run: |
-    #    git clone https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/music
-    #    git clone "your_github_link" package/"your_folder_name"      
+    - name: Import external feeds - mosdns
+      working-directory: ./openwrt
+      run: |
+        git clone https://github.com/sbwml/luci-app-mosdns package/mosdns
+        git clone https://github.com/sbwml/v2ray-geodata package/geodata
+    #    git clone "your_github_link" package/"your_folder_name"     
 
     - name: Configuration Customization - RM2100
       env:
