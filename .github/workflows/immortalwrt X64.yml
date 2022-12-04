@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: OpenWrt firmware immortalwrt X64
+name: OpenWrt firmware immortalwrt X64 passwall
 
 on:
   workflow_dispatch:        
@@ -96,5 +96,5 @@ jobs:
     - name : Upload artifact
       uses: actions/upload-artifact@master
       with:
-        name: OpenWrt firmware immortalwrt X64
+        name: OpenWrt firmware immortalwrt X64 passwall
         path: openwrt/bin
