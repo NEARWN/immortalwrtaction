@@ -64,14 +64,8 @@ jobs:
       working-directory: ./openwrt
       run: |
         ./scripts/feeds update -a
-        ./scripts/feeds install -a
-        
-    - name: Import external feeds - mosdns
-      working-directory: ./openwrt
-      run: |
-        git clone https://github.com/sbwml/luci-app-mosdns package/mosdns
-        git clone https://github.com/sbwml/v2ray-geodata package/geodata
-    #    git clone "your_github_link" package/"your_folder_name"     
+        ./scripts/feeds install -a      
+  
 
     - name: Configuration Customization - RM2100
       env:
