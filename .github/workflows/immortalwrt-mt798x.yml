@@ -45,6 +45,7 @@ jobs:
       run: |
         ./scripts/feeds update -a
         ./scripts/feeds install -a
+        
     - name: Configuration Customization
       env:
         CONFIG_FILE: 'config/rm6000.config'
