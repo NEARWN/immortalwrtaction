@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: OpenWrt firmware immortalwrtARM redmiac2100
+name: OpenWrt firmware immortalwrtARM 360t7
 
 on: 
   workflow_dispatch:
@@ -37,7 +37,7 @@ jobs:
     - name: Clone source code
       env: 
         REPO_URL: https://github.com/padavanonly/immortalwrtARM
-        REPO_BRANCH: master
+        REPO_BRANCH: mt7981
       run: |
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
         cd openwrt
@@ -49,9 +49,9 @@ jobs:
         ./scripts/feeds install -a      
   
 
-    - name: Configuration Customization - RM2100
+    - name: Configuration Customization
       env:
-        CONFIG_FILE: 'config/rm2100.config'
+        CONFIG_FILE: 'config/360t7.config'
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x ./customize.sh && ./customize.sh
@@ -73,5 +73,5 @@ jobs:
     - name : Upload artifact
       uses: actions/upload-artifact@master
       with:
-        name: OpenWrt firmware immortalwrtARM redmiac2100
+        name: OpenWrt firmware immortalwrtARM 360t7
         path: openwrt/bin
