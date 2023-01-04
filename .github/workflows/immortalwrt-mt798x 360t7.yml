@@ -10,10 +10,14 @@
 
 name: OpenWrt firmware immortalwrt-mt798x 360t7
 
-on:
+on: 
   workflow_dispatch:
   schedule:
-    - cron: 0 21 * * 5
+    - cron: 0 20 * * 5
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout
