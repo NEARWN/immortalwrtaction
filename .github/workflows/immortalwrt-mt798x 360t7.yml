@@ -33,9 +33,9 @@ jobs:
     - name: Clone source code
       env: 
         REPO_URL: https://github.com/padavanonly/immortalwrtARM
-        REPO_BRANCH: mt7622
+        REPO_BRANCH: mt7981
       run: |
-        git clone -b mt7622 --single-branch https://github.com/padavanonly/immortalwrtARM openwrt
+        git clone -b mt7981 --single-branch https://github.com/padavanonly/immortalwrtARM openwrt
         cd openwrt
        
     - name: Update & Install feeds
